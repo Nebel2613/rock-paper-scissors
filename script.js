@@ -34,9 +34,9 @@ for (let i = 0; i < 3; i++) {
             computer.innerHTML=0;
             human.innerHTML=0;
         }
-    })
         const choice = options[i].innerHTML;
         const result = playRound(choice, getComputedChoice());
         if (result.substring(0,5)=="You w") {human.innerHTML++}
         else computer.innerHTML++;
+    })
 };
