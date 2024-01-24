@@ -19,15 +19,24 @@ function playRound(playerSelection, computerSelection) {
     return playRound(playerSelection, getComputedChoice());
 }
 
-function game() {
-    console.log("Welcome to my tiny best-of-5 Rock-Paper-Scissors game");
-    let gamesWon = 0;
-    for (let i=0; i<5; i++) {
-        let playerSelection = prompt("Choose Rock, Scissors, or Paper", getComputedChoice());
-        let resultOfGame = playRound(playerSelection, getComputedChoice());
-        console.log(resultOfGame);
-        if (resultOfGame.slice(0, 5)=="You w") {gamesWon++};
-    }
-    if (gamesWon<3) {console.log("You lost...Try again.")}
-    else {console.log("You won!!!Congratulations.")};
-}
+const human = document.querySelector(".human");
+const computer = document.querySelector(".computer");
+const options = document.querySelectorAll("button");
+for (let i = 0; i < 3; i++) {
+    options[i].addEventListener("click", () => {
+        if (computer.innerHTML==5) {
+            alert("You lost...Try again.");
+            computer.innerHTML=0;
+            human.innerHTML=0;
+        }
+        if (human.innerHTML==5) {
+            alert("You won...Congratulations.");
+            computer.innerHTML=0;
+            human.innerHTML=0;
+        }
+    })
+        const choice = options[i].innerHTML;
+        const result = playRound(choice, getComputedChoice());
+        if (result.substring(0,5)=="You w") {human.innerHTML++}
+        else computer.innerHTML++;
+};
